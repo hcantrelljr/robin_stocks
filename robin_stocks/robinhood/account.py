@@ -501,6 +501,22 @@ def get_day_trades(info=None):
 
 
 @login_required
+def get_currency_buying_power(info=None):
+    """Returns currency buying power.
+
+    :param info: Will filter the results to get a specific value.
+    :type info: Optional[str]
+    :returns: Returns a list of dictionaries of key/value pairs for each day trade. If info parameter is provided, \
+    a list of strings is returned where the strings are the value of the key that matches info.
+
+    """
+    account = load_account_profile('account_number')
+    url = currency_buying_power_url(account)
+    data = request_get(url, 'regular')
+    return(filter_data(data, info))
+
+
+@login_required
 def get_documents(info=None):
     """Returns a list of documents that have been released by Robinhood to the account.
 

@@ -101,6 +101,8 @@ def cardtransactions_url():
 def daytrades_url(account):
     return('https://api.robinhood.com/accounts/{0}/recent_day_trades/'.format(account))
 
+def currency_buying_power_url(account, currency='USD'):
+    return('https://bonfire.robinhood.com/accounts/{}/currency_buying_power/{}'.format(account, currency))
 
 def dividends_url():
     return('https://api.robinhood.com/dividends/')
